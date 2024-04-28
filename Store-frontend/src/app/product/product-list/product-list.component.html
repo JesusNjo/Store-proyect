@@ -1,0 +1,47 @@
+<input class="form-control me-3 w-25 d-flex mb-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="query" (input)="onSearch()">
+
+
+<table class="table table-primary table-striped">
+  <thead>
+    <tr>
+      <th scope="col"># 
+        <button class="btn btn-link btn-sort">
+          <i class="fa-solid fa-sort"></i>
+        </button>
+      </th>
+      <th scope="col">Name 
+        <button class="btn btn-link btn-sort" 
+                (click)="sortProductsName('name', currentSortDirectionName === 'ASC' ? 'DESC' : 'ASC')">
+          <i class="fa-solid" [ngClass]="{'fa-sort-down': currentSortDirectionName === 'ASC', 'fa-sort-up': currentSortDirectionName === 'DESC'}"></i>
+        </button>
+      </th>
+      <th scope="col">Price 
+        <button class="btn btn-link btn-sort" 
+        (click)="sortProductsPrice('price', currentSortDirectionPrice === 'ASC' ? 'DESC' : 'ASC')">
+  <i class="fa-solid" [ngClass]="{'fa-sort-down': currentSortDirectionPrice === 'ASC', 'fa-sort-up': currentSortDirectionPrice === 'DESC'}"></i>
+</button>
+      </th>
+      <th scope="col">Category 
+        <button class="btn btn-link btn-sort" 
+        (click)="sortProductsCategory('category', currentSortDirectionCategory === 'ASC' ? 'DESC' : 'ASC')">
+  <i class="fa-solid" [ngClass]="{'fa-sort-down': currentSortDirectionCategory === 'ASC', 'fa-sort-up': currentSortDirectionCategory === 'DESC'}"></i>
+</button>
+      </th>
+      <th scope="col" class="action-column">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of productList; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ item.name }}</td>
+      <td [ngClass]="{ 'text-danger': item.price > 200, 'text-primary': item.price <= 200 }">
+        {{ item.price | currency }}
+      </td>
+      <td>{{item.category}}</td>
+      <td>
+        <button class="btn btn-outline-success" [routerLink]="['/product', item.id]">View detail</button>
+        <button href="#" class="btn btn-outline-warning">Buy this product</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

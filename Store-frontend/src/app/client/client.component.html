@@ -1,0 +1,26 @@
+<table class="table table-success table-striped">
+    <thead>
+        <tr >
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col" >Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of clientList, let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.email}}</td>
+
+            <td class="buttons">
+                <button class="btn btn-outline-success" [routerLink]="['/client', item.id]">View detail</button>
+                <button class="btn btn-outline-danger">Delete</button>
+                <button class="btn btn-outline-primary" [routerLink]="['/client/modify', item.id]">Update</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>

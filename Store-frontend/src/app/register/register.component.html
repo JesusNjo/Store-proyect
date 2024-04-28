@@ -1,0 +1,68 @@
+<div class="container mt-5">
+    <form class="bg-light p-3 rounded" style="max-width: 300px; margin: 0 auto;"
+      [formGroup]="formGr" (ngSubmit)="sendInformation()">
+      <div class="mb-3">
+        <label for="name" class="form-label">First name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name">
+        <p class="text-danger" *ngIf="hasErrors('name', 'required')">Name is required.</p>
+      </div>
+  
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name"
+          formControlName="lastName">
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" formControlName="email">
+      </div>
+  
+      <div class="mb-3">
+        <label for="address" class="form-label">Residence address</label>
+        <input type="text" class="form-control" id="address" placeholder="Enter your direction"
+          formControlName="address">
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <input type="{{ passwordVisible ? 'text' : 'password' }}" class="form-control" id="password" placeholder="Enter your password" formControlName="password">
+          <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+            <i class="fa" [ngClass]="{ 'fa-eye': passwordVisible, 'fa-eye-slash': !passwordVisible }"></i>
+          </button>
+        </div>
+        <p class="text-danger" *ngIf="hasErrors('password', 'required')">Password is required.</p>
+        <p class="text-danger" *ngIf="hasErrors('password', 'minlength')">Password must have at least 8 characters.</p>
+        <p class="text-danger" *ngIf="hasErrors('password', 'invalidPass')">Password must have upper and lower case letters.</p>
+        <p class="text-danger" *ngIf="hasErrors('passwordS', 'passwordS')">Passwords do not match.</p>
+      </div>
+      
+      <div class="mb-3">
+        <label for="spassword" class="form-label">Repeat password</label>
+        <div class="input-group">
+          <input type="{{ confirmPasswordVisible ? 'text' : 'password' }}" class="form-control" id="spassword" placeholder="Repeat password" formControlName="passwordS">
+          <button class="btn btn-outline-secondary" type="button" (click)="toggleConfirmPasswordVisibility()">
+            <i class="fa" [ngClass]="{ 'fa-eye': confirmPasswordVisible, 'fa-eye-slash': !confirmPasswordVisible }"></i>
+          </button>
+        </div>
+        <p class="text-danger" *ngIf="hasErrors('passwordS', 'required')">Repeat password is required.</p>
+        <p class="text-danger" *ngIf="hasErrors('passwordS', 'passwordS')">Passwords do not match.</p>
+      </div>
+      
+      
+  
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" formControlName="gender" id="gender">
+          <option value="Select type" disabled>Select gender</option>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+          <option value="OTHER">Other</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+  
