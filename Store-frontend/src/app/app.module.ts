@@ -14,6 +14,8 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductGridComponent } from './product/product-grid/product-grid.component';
 import { BuyCardComponent } from './buy-card/buy-card.component';
+import { SellProductComponent } from './product/sell-product/sell-product.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { BuyCardComponent } from './buy-card/buy-card.component';
     ProductDetailComponent,
     ProductListComponent,
     ProductGridComponent,
-    BuyCardComponent
+    BuyCardComponent,
+    SellProductComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

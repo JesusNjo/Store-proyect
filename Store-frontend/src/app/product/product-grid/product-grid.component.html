@@ -3,7 +3,7 @@
       <div class="col-sm-4" *ngFor="let item of productList">
         <div class="card mb-3">
           <div class="card-body center">
-            <img src={{item.image}} alt="">
+            <img src={{item.image}} class="card-img-top product-image" alt="Producto {{ item.id }}" style="object-fit: contain; height: 300px;">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text">{{ item.price | currency }}</p>
             <p class="card-text">{{ item.description }}</p>

@@ -23,7 +23,8 @@ public class ClientServiceImp implements IClientService{
     private final ClientRepository clientRepository;
     @Override
     public List<Client> findAllClient() {
-       return clientRepository.findAll();
+       
+        return clientRepository.findAll();
     }
 
     @Override

@@ -1,12 +1,7 @@
-.x{
-    border-radius: 50px;
-}
 .logo{
     color: #548441;
     text-align: center;
     transition: .3s ease;
-    margin-bottom: 50px;
-    font-size: 45px;
 }
 .logo:hover{
     color: white;

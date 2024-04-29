@@ -1,47 +1,55 @@
 <div class="container mt-5">
+  <h2 class="logo">Ingresa tus datos :)</h2>
     <form class="bg-light p-3 rounded" style="max-width: 300px; margin: 0 auto;"
       [formGroup]="formGr" (ngSubmit)="sendInformation()">
       <div class="mb-3">
-        <label for="name" class="form-label">First name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name">
+        <label for="name" class="form-label">First name <span class="text-danger">*</span></label>
+        <input [ngClass]="{'is-invalid': hasErrors('name','required')}" type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name">
         <p class="text-danger" *ngIf="hasErrors('name', 'required')">Name is required.</p>
       </div>
   
       <div class="mb-3">
-        <label for="lastName" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name"
+        <label for="lastName" class="form-label">Last name <span class="text-danger">*</span></label>
+        <input [ngClass]="{'is-invalid': hasErrors('lastName','required')}" type="text" class="form-control" id="lastName" placeholder="Enter your last name"
           formControlName="lastName">
+        <p class="text-danger" *ngIf="hasErrors('lastName','required')">Last name is required</p>
       </div>
   
       <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email" formControlName="email">
+        <label for="email" class="form-label">Email address <span class="text-danger">*</span></label>
+        <input [ngClass]="{'is-invalid': hasErrors('email','required') || hasErrors('email','email')}" type="email" class="form-control" id="email" placeholder="Enter your email" formControlName="email">
+        <p class="text-danger" *ngIf="hasErrors('email','required')">Email address is required</p>
+        <p class="text-danger" *ngIf="hasErrors('email','email')">Email format is invalid</p>
       </div>
   
       <div class="mb-3">
-        <label for="address" class="form-label">Residence address</label>
-        <input type="text" class="form-control" id="address" placeholder="Enter your direction"
+        <label for="address" class="form-label">Residence address <span class="text-danger">*</span></label>
+        <input [ngClass]="{'is-invalid': hasErrors('address','required')}" type="text" class="form-control" id="address" placeholder="Enter your direction"
           formControlName="address">
+          <p class="text-danger" *ngIf="hasErrors('address','required')">Residence address is required</p>
       </div>
   
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
         <div class="input-group">
-          <input type="{{ passwordVisible ? 'text' : 'password' }}" class="form-control" id="password" placeholder="Enter your password" formControlName="password">
+          <input type="{{ passwordVisible ? 'text' : 'password' }}" class="form-control" id="password" placeholder="Enter your password" formControlName="password"
+          [ngClass]="{'is-invalid': hasErrors('password','required')}">
           <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
             <i class="fa" [ngClass]="{ 'fa-eye': passwordVisible, 'fa-eye-slash': !passwordVisible }"></i>
           </button>
         </div>
         <p class="text-danger" *ngIf="hasErrors('password', 'required')">Password is required.</p>
         <p class="text-danger" *ngIf="hasErrors('password', 'minlength')">Password must have at least 8 characters.</p>
-        <p class="text-danger" *ngIf="hasErrors('password', 'invalidPass')">Password must have upper and lower case letters.</p>
+        <p class="text-danger" *ngIf="hasErrors('password', 'invalidPass') && !hasErrors('password','required') && !hasErrors('password','minlength')">Password must have upper and lower case letters.</p>
         <p class="text-danger" *ngIf="hasErrors('passwordS', 'passwordS')">Passwords do not match.</p>
+        
       </div>
       
       <div class="mb-3">
-        <label for="spassword" class="form-label">Repeat password</label>
+        <label for="spassword" class="form-label">Repeat password <span class="text-danger">*</span></label>
         <div class="input-group">
-          <input type="{{ confirmPasswordVisible ? 'text' : 'password' }}" class="form-control" id="spassword" placeholder="Repeat password" formControlName="passwordS">
+          <input type="{{ confirmPasswordVisible ? 'text' : 'password' }}" class="form-control" id="spassword" placeholder="Repeat password" formControlName="passwordS"
+          [ngClass]="{'is-invalid': hasErrors('passwordS','required')}">
           <button class="btn btn-outline-secondary" type="button" (click)="toggleConfirmPasswordVisibility()">
             <i class="fa" [ngClass]="{ 'fa-eye': confirmPasswordVisible, 'fa-eye-slash': !confirmPasswordVisible }"></i>
           </button>
@@ -53,7 +61,7 @@
       
   
       <div class="mb-3">
-        <label for="gender" class="form-label">Gender</label>
+        <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
         <select class="form-select" formControlName="gender" id="gender">
           <option value="Select type" disabled>Select gender</option>
           <option value="MALE">Male</option>
@@ -62,7 +70,9 @@
         </select>
       </div>
   
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      <p class="fs-4 bg-danger text-center x" *ngIf="hasErrors('name','required') || hasErrors('lastName','required')
+      || hasErrors('email','required') || hasErrors('address','required')|| hasErrors('password','required')">All fields are required.</p>
+      <button type="submit" class="btn btn-primary btn-block px-5 mt-5">Submit</button>
     </form>
   </div>
   
