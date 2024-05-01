@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center;">
-  <ng-container *ngIf="!loading">
+  <ng-container *ngIf="!loading; else loadingSpinner">
     <div class="card" style="width: 18rem;">
       <img src="{{product?.image}}" alt="">
       <div class="card-header">
@@ -10,7 +10,14 @@
         <li class="list-group-item">{{product?.price | currency}}</li>
         <li class="list-group-item">{{product?.description}}</li>
       </ul>
+    <button class="btn btn-warning">Add to car
+      <i class="fas fa-shopping-cart"></i>
+    </button>
+
     </div>
   </ng-container>
-  <ng-container *ngIf="loading">Loading....</ng-container>
+  <ng-template #loadingSpinner >
+    <mat-progress-spinner color="warn" mode="indeterminate" class="mt-5" [value]="50"></mat-progress-spinner>
+
+  </ng-template>
 </div>

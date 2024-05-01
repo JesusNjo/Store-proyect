@@ -16,6 +16,9 @@ import { ProductGridComponent } from './product/product-grid/product-grid.compon
 import { BuyCardComponent } from './buy-card/buy-card.component';
 import { SellProductComponent } from './product/sell-product/sell-product.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,6 +28,11 @@ public interface ClientRepository extends MongoRepository<Client,String> {
     })
     List<Client> findClientPagin(String property,int direction,int limit, int skip);
 
+    @Aggregation({
+            "{$match: {username: ?0}}"
+    })
+    Optional<Client> findByUsername(String username);
+
 
 
 
