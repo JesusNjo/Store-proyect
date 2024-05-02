@@ -3,6 +3,7 @@ package com.Store.Store.backend.service.client;
 import com.Store.Store.backend.entity.Client;
 import com.Store.Store.backend.entity.dto.ClientDTO;
 import com.Store.Store.backend.entity.emuns.Gender;
+import com.Store.Store.backend.entity.emuns.Role;
 import com.Store.Store.backend.entity.pagination.Pagination;
 import com.Store.Store.backend.repository.client.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,10 +39,12 @@ public class ClientServiceImp implements IClientService{
         Client client = Client.builder()
                 .name(clientDTO.getName())
                 .lastName(clientDTO.getLastName())
+                .username(clientDTO.getUserName())
                 .email(clientDTO.getEmail())
                 .password(clientDTO.getPassword())
                 .address(clientDTO.getAddress())
                 .gender(Gender.valueOf(clientDTO.getGender().toUpperCase()))
+                .role(Role.USER)
                 .build();
         clientRepository.findClientByEmail(client.getEmail()).ifPresentOrElse(present->{
             log.error("This email is already exist "+client.getEmail());
@@ -78,6 +81,12 @@ public class ClientServiceImp implements IClientService{
             clientRepository.save(clientToModify);
         }
 
+    }
+    @Override
+    public Client findClientByEmail(String email){
+        Optional<Client> client = clientRepository.findClientByEmail(email);
+
+       return client.isPresent() ? client.get() : null;
     }
 
     //Pagination and querys

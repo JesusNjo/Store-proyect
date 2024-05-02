@@ -10,6 +10,7 @@ import { ClientComponent } from './client/client.component';
 import { SellProductComponent } from './product/sell-product/sell-product.component';
 import { BuyCardComponent } from './buy-card/buy-card.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -23,7 +24,9 @@ const routes: Routes = [
   {path: 'client', component:ClientComponent},
   {path: 'sell', component:SellProductComponent},
   {path: 'buycar', component: BuyCardComponent},
-  {path: 'login', component:LoginComponent}
+  {path: 'login', component:LoginComponent},
+
+  {path: 'inicio', component: DashboardComponent}
 ];
 
 @NgModule({

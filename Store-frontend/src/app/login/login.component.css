@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    margin: 0 auto;
+    background: #1c1e21;
+    width: 45%;
+    height: 500px;
+    margin: 50px auto;
+}
+.form-input{
+    margin: 0px auto;
+    padding: 10px 20px;
+}
+.con{
+    width: 50%;
+}
+.logo{
+    color: #548441;
+    text-align: left;
+    transition: .3s ease;
+    margin: 50px 0px;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+.logo:hover{
+    color: white;
+    
+}

@@ -1,9 +1,10 @@
 export interface Client{
-    id:number,
+    id:string,
     name:string,
+    username:string,
     lastName:string,
     email:string,
-    gender: Gender,
+    gender?: Gender,
     address:string,
     password:string
 }
@@ -12,4 +13,9 @@ interface Gender{
     MALE:"male",
     FEMALE:"female",
     OTHER:"other"
+}
+
+export interface LoginRq{
+    username:string,
+    password:string
 }

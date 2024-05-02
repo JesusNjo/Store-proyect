@@ -1,0 +1,65 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">    
+      <a class="navbar-brand" href="#">
+          <img src="../assets/img/img-removebg-preview.png" >
+      </a>
+    <div *ngIf="clientLoginOn">
+        <div class="nav-item">
+            <div class="input-group">
+                <label class="input-group-text" for="categorySelect">Categorías</label>
+                <select class="form-select"  id="categorySelect">
+                    <option selected disabled>Selecciona una categoría</option>
+                    <option value="MAN">Caballeros</option>
+                    <option value="LADY">Damas</option>
+                    <option value="ELECTRICAL">Electronica</option>
+                    <option value="Jewels">Joyas</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <img class="user-img" src="../../assets/userimg.png" alt="usuario">
+            <p class="text-danger">{{clientData?.email}}</p>
+            <p>{{client?.lastName}}</p>
+        </div>
+    </div>
+      <!-- Botón para colapsar el menú en dispositivos pequeños -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Contenido del menú -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="product/list">Listado</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" routerLink="client">Clientes</a>
+            </li>
+
+              <!-- Select para categorías -->
+             
+
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="sell">Vender</a>
+              </li>
+              
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="buycar"><i class="fas fa-shopping-cart"></i></a>
+              </li>
+          </ul>
+      </div>
+
+      <!-- Botones de registro, inicio de sesión y cierre de sesión -->
+      <a class="btn btn-success ms-3" *ngIf="!clientLoginOn" routerLink="register">Registrar</a>
+      <a class="btn btn-success ms-3" *ngIf="!clientLoginOn" routerLink="login">Ingresar</a>
+      <a class="btn btn-danger ms-3" *ngIf="clientLoginOn">Salir</a>
+  </div>
+</nav>

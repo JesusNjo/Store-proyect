@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
     this.formGr = formB.group({
      name: ['', Validators.required],
      lastName:['',Validators.required],
+     username: ['',Validators.required],
      email: ['',[Validators.required,Validators.email]],
      address: ['', Validators.required],
      gender: ['Select type', Validators.required],
@@ -49,6 +50,8 @@ export class RegisterComponent implements OnInit {
           console.log(error);
         }
       });
+    }else{
+      this.formGr.markAllAsTouched();
     }
   }
   matchValidator(controlName: string, matchingControlName: string): ValidatorFn {

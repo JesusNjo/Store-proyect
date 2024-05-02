@@ -1,30 +1,51 @@
-<body>
+<!-- Componente Home HTML -->
+<body *ngIf="clientLoginOn">
   <div class="container-fluid bg-light p-5 text-center">
     <h1 class="display-4">Bienvenido a Naranjo'Store</h1>
     <p class="lead">Encuentra todo lo que necesitas en un solo lugar</p>
   </div>
 
-  <!-- Product Section -->
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let item of products">
-        <div class="card">
-          <img src={{item.image}} class="card-img-top product-image" alt="Producto {{ item.id }}" style="object-fit: contain; height: 300px;">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            <button class="btn btn-outline-success" [routerLink]="['/product', item.id]">View detail</button>
+  <!-- Contenedor del selector de categorías y sección de productos -->
+  <div *ngIf="showCategorySelector" class="container my-5 cd">
+    <!-- <div class="row">
+       Selector de categorías 
+      <div class="col-md-12 mb-3">
+        <div class="input-group">
+          <label class="input-group-text" for="categorySelect">Categorías</label>
+          <select class="form-select" id="categorySelect">
+            <option selected disabled hidden>Selecciona una categoría</option>
+            <option value="LADY">Damas</option>
+            <option value="MAN">Caballeros</option>
+            <option value="Jewels">Joyas</option>
+          </select>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Sección de productos -->
+    <div class="row d-flex align-items-stretch">
+      <div class="col-md-4 mb-3 cls" *ngFor="let item of products">
+        <div class="card h-100">
+          <img src="{{item.image}}" class="card-img-top product-image" alt="Producto {{ item.id }}">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">{{ item.name }}</h5>
+              <p class="card-text">{{ item.description }}</p>
+            </div>
+            <div class="buttons">
+              <button class="btn btn-outline-success" [routerLink]="['/product', item.id]">View detail</button>
+              <button class="btn btn-warning">Buy <i class="fas fa-shopping-cart"></i></button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   
-
-  <!-- Footer -->
-  <footer class="bg-dark text-light text-center py-3">
-    <p>Todos los derechos reservados &copy; 2024 Naranjo'Store</p>
-  </footer>
-
 </body>
+
+<ng-container *ngIf="!clientLoginOn">
+  <h2>Ingresa para continuar</h2>
+<app-login></app-login>
+</ng-container>
 

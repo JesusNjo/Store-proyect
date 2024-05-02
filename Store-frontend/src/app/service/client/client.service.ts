@@ -23,4 +23,9 @@ export class ClientService {
   public createClient=(client:Client):Observable<Client>=>{
     return this.httpClient.post<Client>(`${this.url}`,client)
   }
+  public findClientByEmail=(email:string):Observable<Client>=>{
+    
+    console.log();
+    return this.httpClient.get<Client>(`${this.url}/${email}`);
+  }
 }

@@ -18,6 +18,9 @@ import { SellProductComponent } from './product/sell-product/sell-product.compon
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -33,7 +36,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ProductGridComponent,
     BuyCardComponent,
     SellProductComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
+    DashboardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

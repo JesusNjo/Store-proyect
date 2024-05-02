@@ -2,6 +2,7 @@ package com.Store.Store.backend.service.client;
 
 import com.Store.Store.backend.entity.Client;
 import com.Store.Store.backend.entity.dto.ClientDTO;
+import com.Store.Store.backend.entity.login.RegisterRequest;
 import com.Store.Store.backend.entity.pagination.Pagination;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public interface IClientService {
     public void deleteClientById(String id);
 
     public void modifyClient(ClientDTO client, String id);
+    public Client findClientByEmail(String email);
 
     public List<Client> findClientPagin(Pagination pagination);
 }

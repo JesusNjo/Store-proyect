@@ -10,8 +10,8 @@ import lombok.Data;
 public class ClientDTO {
 
     private String name;
-    private String userName;
     private String lastName;
+    private String userName;
     private String email;
     private String password;
     private String address;

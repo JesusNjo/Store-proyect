@@ -2,6 +2,7 @@ package com.Store.Store.backend.controller.client;
 
 import com.Store.Store.backend.entity.Client;
 import com.Store.Store.backend.entity.dto.ClientDTO;
+import com.Store.Store.backend.entity.login.RegisterRequest;
 import com.Store.Store.backend.entity.pagination.Pagination;
 import com.Store.Store.backend.service.client.ClientServiceImp;
 import com.Store.Store.backend.service.client.IClientService;
@@ -37,9 +38,17 @@ public class ClientController {
         return ResponseEntity.ok(clientFound);
     }
     @PostMapping()
-    public ResponseEntity<Map<String,String>> createClient(@RequestBody ClientDTO clientDTO) {
-        Map<String,String> createdClient = clientService.createClient(clientDTO);
+
+    public ResponseEntity<Map<String,String>> createClient(@RequestBody ClientDTO request) {
+        Map<String,String> createdClient = clientService.createClient(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdClient);
+    }
+
+    @GetMapping("/{email}")
+    public ResponseEntity<Client> findClientByEmail(@RequestParam String email){
+        Client client = clientService.findClientByEmail(email);
+        return client != null ? ResponseEntity.ok(client):
+                ResponseEntity.notFound().build();
     }
 
     //Pagination and query
